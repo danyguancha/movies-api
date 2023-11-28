@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,7 @@ class MovieFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->unique()->sentence(3),
+            'name' => $this->faker->unique()->words(3, true),
             'year_release' => $this->faker->date(),
             'director' => $this->faker->name(),
             'genre' => $this->faker->word(),
@@ -27,6 +28,7 @@ class MovieFactory extends Factory
             'puntuaction' => $this->faker->word(),
             'actors' => $this->faker->name(),
             'image' => $this->faker->imageUrl(),
+            'fk_category_id' => Category::factory()->create()->id,
         ];
     }
 }

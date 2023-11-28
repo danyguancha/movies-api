@@ -32,6 +32,7 @@ class MovieRequestCreate extends FormRequest
             'puntuaction' => ['required', 'string'],
             'actors' => ['required', 'string'],
             'image' => ['required', 'string'],
+            'fk_category_id' => ['required', 'integer'],
         ];
     }
 }

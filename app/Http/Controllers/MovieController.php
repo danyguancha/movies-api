@@ -32,7 +32,11 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        return response()->json(['movie' => $movie], Response::HTTP_OK);
+        $category = $movie->category;
+        $response = [
+            'movie' => $movie,
+        ];
+        return response()->json($response, Response::HTTP_OK);
     }
 
     /**
@@ -50,7 +54,7 @@ class MovieController extends Controller
     public function destroy(Movie $movie)
     {
         $movie->delete();
-        return response()->json(null, Response::HTTP_ACCEPTED);
+        return response()->json(['movie'=>$movie], Response::HTTP_ACCEPTED);
 
     }
 }
